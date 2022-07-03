@@ -22,6 +22,7 @@ You can use this add-on to install Crowdsec, which is an open-source and partici
 
 # Updates
 
-* Option to disable Local API
-* Option to add remote API URL
-* Option to add remote API credentials
+* New Crowdsec agent config options:
+  * Disable Local API
+  * Add remote API URL
+  * Specify remote API credentials
