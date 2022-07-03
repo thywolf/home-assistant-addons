@@ -19,3 +19,9 @@ You can use this add-on to install Crowdsec, which is an open-source and partici
 
 * CrowdSec: For the installations process, please refer to [this document](https://github.com/crowdsecurity/home-assistant-addons/blob/main/crowdsec/DOCS.md) 
 * CrowdSec Firewall Bouncer: For the installations process, please refer to [this document](https://github.com/crowdsecurity/home-assistant-addons/blob/main/crowdsec-firewall-bouncer/DOCS.md) 
+
+# Updates
+
+* Option to disable Local API
+* Option to add remote API URL
+* Option to add remote API credentials
