@@ -1,6 +1,6 @@
 name: "Crowdsec Firewall Bouncer"
 description: "Crowdsec bouncer written in golang for firewalls"
-url: "https://github.com/crowdsecurity/home-assistant-addons/tree/main/crowdsec-firewall-bouncer/DOCS.md"
+url: "https://github.com/thywolf/home-assistant-addons/tree/main/crowdsec-firewall-bouncer/DOCS.md"
 version: "v0.0.24"
 slug: crowdsec-firewall-bouncer
 init: false
@@ -13,7 +13,7 @@ arch:
   - aarch64
   - armv7
   - i386
-image: "ghcr.io/crowdsecurity/{arch}-addon-crowdsec-firewall-bouncer"
+image: "ghcr.io/thywolf/{arch}-addon-crowdsec-firewall-bouncer"
 options:
   api_url: "http://424ccef4-crowdsec:8080/"
   api_key: ""
