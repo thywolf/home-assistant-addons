@@ -11,6 +11,10 @@ declare postoverflows
 declare parsers_to_disable
 declare scenarios_to_disable
 declare disable_online_api
+declare disable_local_api
+declare agent_username
+declare agent_password
+declare local_api_url
 
 # Get all arguments
 acquisition=$(bashio::config 'acquisition')
@@ -21,6 +25,10 @@ postoverflows=$(bashio::config 'postoverflows')
 parsers_to_disable=$(bashio::config 'parsers_to_disable')
 scenarios_to_disable=$(bashio::config 'scenarios_to_disable')
 disable_online_api=$(bashio::config 'disable_online_api')
+disable_local_api=$(bashio::config 'disable_local_api')
+agent_username=$(bashio::config 'agent_username')
+agent_password=$(bashio::config 'agent_password')
+local_api_url=$(bashio::config 'local_api_url')
 
 # Copy Crowdsec config and data files to make it persistent if it's not already
 if [ -d "/config/.storage/crowdsec/config/" ]; then
@@ -119,6 +127,30 @@ if [[ ! -z "${scenarios_to_disable}" ]]; then
         DISABLE_SCENARIOS="${DISABLE_SCENARIOS}${item} "
     done
     export DISABLE_SCENARIOS="${DISABLE_SCENARIOS}"
+fi
+
+DISABLE_LOCAL_API=""
+if bashio::var.true "${disable_local_api}"; then
+    bashio::log.info "Local API will be disabled"
+    export DISABLE_LOCAL_API="true"
+fi
+
+LOCAL_API_URL=""
+if [[ ! -z "${local_api_url}" ]]; then
+    bashio::log.info "Local API URL will be set to ${local_api_url}"
+    export LOCAL_API_URL="${local_api_url}"
+fi
+
+AGENT_USERNAME=""
+if [[ ! -z "${agent_username}" ]]; then
+    bashio::log.info "Found agent username ${agent_username}"
+    export AGENT_USERNAME="${agent_username}"
+fi
+
+AGENT_PASSWORD=""
+if [[ ! -z "${agent_password}" ]]; then
+    bashio::log.info "Found agent password"
+    export AGENT_PASSWORD="${agent_password}"
 fi
 
 exec bash /docker_start.sh
